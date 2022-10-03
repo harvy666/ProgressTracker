@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome! Super Sprinter 2000</title>
+</head>
+<body>
+<h1>Super Sprinter 3000</h1>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    td
+    {
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+</style>
+
+<a href="/story">Add new User Story</a>
+
+
+<table>
+    <thead >
+        <th>Id</th>
+        <th>Story Title</th>
+        <th>User story</th>
+        <th>Acceptance Criteria</th>
+        <th>Business value</th>
+        <th>Estimation</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userstory : ${userStories}">
+        <td th:text="${userstory.getId()}"></td>
+        <td th:text="${userstory.getStoryTitle()}"></td>
+        <td th:text="${userstory.getUserStory()}"></td>
+        <td th:text="${userstory.getAcceptanceCriteria()}"></td>
+        <td th:text="${userstory.getBusinessValue()}"></td>
+        <td th:text="|${userstory.getEstimation()}h|"></td>
+        <td th:text="${userstory.getStatus}"></td>
+        <td><a href="#" th:href="@{/story/{id}(id=${userstory.id})}"  >Update User Story</a></td>
+    </tr>
+
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
+
+
+
+

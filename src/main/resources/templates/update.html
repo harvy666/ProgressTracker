@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User Story</title>
+</head>
+<body>
+<h1>HELLO</h1>
+
+<form name="userStoryForm" th:action="@{/story/{id}(id=${story.getId()})}"  method="post" >
+
+
+    <label for="storytitle">Story Title:</label> <br>  <br>
+    <input type="text" th:value="${story.getStoryTitle()}" id="storytitle" name="storytitle"   minlength="5" maxlength="100" required/> <br> <br>
+
+    <label for="userstory">User Story:</label> <br> <br>
+    <textarea id="userstory" th:text="${story.getUserStory()}" name="userstory" rows="4" cols="50"   minlength="1" maxlength="400"  required></textarea> <br> <br>
+
+    <label for="acceptancecriteria">Acceptance Criteria:</label> <br> <br>
+    <textarea id="acceptancecriteria" th:text="${story.getAcceptanceCriteria()}" name="acceptancecriteria" rows="4" cols="50"   minlength="1" maxlength="400"  required></textarea> <br> <br>
+
+    <label for="businessvalue">Business value:</label> <br> <br>
+    <input type="number" th:value="${story.getBusinessValue()}" id="businessvalue" name="businessvalue"   min="0.5" max="40.0" step="0.5" required/> <br> <br>
+
+    <label for="estimation">Estimation:</label> <br> <br>
+    <input type="text" th:value="${story.getEstimation()}" id="estimation" name="estimation"  required /><br> <br>
+
+    <label for="status">Status</label>
+    <select name="status" id="status">
+        <option value="planning" th:selected="'planning' == ${story.getStatus()}">planning</option>
+        <option value="todo" th:selected="'todo' == ${story.getStatus()}">todo</option>
+        <option value="in progress" th:selected="'in progress' == ${story.getStatus()}">in progress</option>
+        <option value="review" th:selected="'review' == ${story.getStatus()}">review</option>
+        <option value="done" th:selected="'done' == ${story.getStatus()}">done</option>
+    </select> <br> <br>
+
+    <input type="submit" value="Update User Story"> <br> <br>
+</form>
+
+
+</body>
+</html>
